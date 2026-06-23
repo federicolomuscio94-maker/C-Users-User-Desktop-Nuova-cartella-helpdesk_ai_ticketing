@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Nuovo ticket{% endblock %}
+{% block content %}
+<h1>Apri un ticket</h1>
+<form method="post" class="form">
+  <label>Nome</label>
+  <input name="name" required>
+
+  <label>Email</label>
+  <input name="email" type="email" required>
+
+  <label>Categoria</label>
+  <select name="category" required>
+    <option>Password / Accesso</option>
+    <option>Rete / Internet</option>
+    <option>VPN</option>
+    <option>Stampante</option>
+    <option>Email / Outlook</option>
+    <option>PC lento / Crash</option>
+    <option>Altro</option>
+  </select>
+
+  <label>Priorità</label>
+  <select name="priority">
+    <option>Bassa</option>
+    <option selected>Media</option>
+    <option>Alta</option>
+    <option>Critica</option>
+  </select>
+
+  <label>Titolo problema</label>
+  <input name="title" required>
+
+  <label>Descrizione</label>
+  <textarea name="description" rows="8" required placeholder="Spiega il problema, errore visualizzato, dispositivo usato, da quando succede..."></textarea>
+
+  <button type="submit">Invia ticket</button>
+</form>
+{% endblock %}

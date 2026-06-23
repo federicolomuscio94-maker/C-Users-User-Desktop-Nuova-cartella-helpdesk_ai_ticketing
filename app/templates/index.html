@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}HelpDesk AI{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>HelpDesk AI Ticketing</h1>
+  <p>Apri un ticket e ricevi subito una prima risposta automatica dall'agente AI.</p>
+  <a class="button" href="/ticket/new">Apri un ticket</a>
+</section>
+
+<section class="cards">
+  <div class="card">
+    <h3>Livello 1 AI</h3>
+    <p>L'agente prova a risolvere problemi comuni: password, VPN, rete, stampanti, Outlook e PC lento.</p>
+  </div>
+  <div class="card">
+    <h3>Escalation</h3>
+    <p>Se il problema non si risolve, il ticket resta aperto per il tecnico umano.</p>
+  </div>
+  <div class="card">
+    <h3>Installabile</h3>
+    <p>Il sito può essere installato come app dal browser grazie alla modalità PWA.</p>
+  </div>
+</section>
+{% endblock %}

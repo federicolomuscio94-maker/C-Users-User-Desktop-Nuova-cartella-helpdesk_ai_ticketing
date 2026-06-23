@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Ticket creato{% endblock %}
+{% block content %}
+<h1>Ticket creato</h1>
+<div class="card">
+  <h2>{{ title }}</h2>
+  <h3>Risposta agente AI</h3>
+  <pre>{{ ai_answer }}</pre>
+</div>
+<a class="button" href="/ticket/new">Apri un altro ticket</a>
+{% endblock %}

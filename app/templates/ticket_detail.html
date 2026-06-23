@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Ticket {{ ticket.id }}{% endblock %}
+{% block content %}
+<h1>Ticket #{{ ticket.id }}</h1>
+<div class="card">
+  <p><strong>Utente:</strong> {{ ticket.name }} - {{ ticket.email }}</p>
+  <p><strong>Categoria:</strong> {{ ticket.category }}</p>
+  <p><strong>Priorità:</strong> {{ ticket.priority }}</p>
+  <p><strong>Stato:</strong> {{ ticket.status }}</p>
+  <h3>Descrizione</h3>
+  <pre>{{ ticket.description }}</pre>
+  <h3>Risposta AI</h3>
+  <pre>{{ ticket.ai_answer }}</pre>
+</div>
+
+<form method="post" class="form">
+  <label>Stato</label>
+  <select name="status">
+    <option {% if ticket.status == 'Aperto' %}selected{% endif %}>Aperto</option>
+    <option {% if ticket.status == 'In lavorazione' %}selected{% endif %}>In lavorazione</option>
+    <option {% if ticket.status == 'Risolto' %}selected{% endif %}>Risolto</option>
+    <option {% if ticket.status == 'Chiuso' %}selected{% endif %}>Chiuso</option>
+  </select>
+
+  <label>Nota operatore</label>
+  <textarea name="operator_note" rows="6">{{ ticket.operator_note }}</textarea>
+
+  <button type="submit">Salva</button>
+</form>
+{% endblock %}
