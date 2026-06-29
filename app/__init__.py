@@ -3,7 +3,7 @@ import sqlite3
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from dotenv import load_dotenv
-
+from app.ai_agent import analizza_ticket
 DB_PATH = os.path.join(os.path.dirname(__file__), "data", "tickets.db")
 
 
@@ -28,7 +28,7 @@ def create_app():
             description = request.form.get("description", "").strip()
             priority = request.form.get("priority", "Media").strip()
 
-            ai_answer = helpdesk_agent(category, title, description)
+            ai_answer = analizza_ticket(category, title, description)
 
             with sqlite3.connect(DB_PATH) as conn:
                 conn.execute(
