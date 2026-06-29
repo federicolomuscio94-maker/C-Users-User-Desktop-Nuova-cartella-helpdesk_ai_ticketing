@@ -3,13 +3,16 @@ from openai import OpenAI
 
 
 def analizza_ticket(category, title, description):
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
-        return "Errore: OPENAI_API_KEY non configurata su Render."
+        return "Errore: GROQ_API_KEY non configurata su Render."
 
     try:
-        client = OpenAI(api_key=api_key)
+        client = OpenAI(
+            api_key=api_key,
+            base_url="https://api.groq.com/openai/v1"
+        )
 
         prompt = f"""
 Sei un tecnico Help Desk IT Senior.
@@ -29,7 +32,7 @@ Nota tecnica:
 """
 
         risposta = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="llama-3.3-70b-versatile",
             messages=[
                 {"role": "system", "content": "Sei un agente AI Help Desk professionale."},
                 {"role": "user", "content": prompt}
@@ -40,4 +43,4 @@ Nota tecnica:
         return risposta.choices[0].message.content
 
     except Exception as e:
-        return f"Errore Agent AI: {str(e)}"
+        return f"Errore Agent AI Groq: {str(e)}"
